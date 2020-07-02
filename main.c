@@ -57,6 +57,12 @@ int main() {
     printf("Mの数 > ");
     scanf("%d", &bombCount);
 
+    // Mの数が適切かチェック
+    if (bombCount > size * 2 - 1){
+        printf("ボードのマスよりMの数が多くなっています．");
+        exit(0);
+    }
+
     // ボード生成
     backBoard = initBoard(size);
     showBoard = initBoard(size);
@@ -154,7 +160,7 @@ int play(char **backBoard, char **showBoard, int size, int bombCount) {
 
         // 入力チェック
         if (checkInput(x, y, mode, size)) {
-            printf("予期しない値です．x座標 y座標 モード(0:オープン，1:マーク)の順にもう一度入力してください．\n");
+            printf("座標またはモードの指定が間違っています．x座標 y座標 モード(0:オープン，1:マーク)の順にもう一度入力してください．\n");
             continue;
         }
 
